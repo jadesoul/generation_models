@@ -1,0 +1,7 @@
+# sanic
+# path
+# deepspeed==0.7.2
+# megatron
+# unicore
+# cv2
+# diffusers

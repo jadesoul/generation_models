@@ -1,0 +1,445 @@
+spring_couplet_generation:
+  name: 春联生成模型-中文-base
+  inputs: 
+    - 以关键词“五福”写一副春联
+
+# GPT Models
+# Model	Layers	Heads	d_model	LR	Batch
+# base	12	12	768	6.0e-4	0.5M
+# large	24	16	1024	3.0e-4	0.5M
+# 1.3B	24	32	2048	2.0e-4	2M
+# 2.7B	32	32	2560	1.6e-4	2M
+# 13B	40	40	5120	1.0e-4	6M
+# 30B	48	56	7168	1.0e-4	6M
+# 175B(work in process)	96	96	12288	1.2e-4	6M
+
+nlp_gpt3_text-generation_chinese-large:
+  name: GPT-3预训练生成模型-中文-large
+  inputs: 
+    - 用Python写一段冒泡排序代码：
+    - 随着计算机视觉的飞速发展,人脸识别技术已从简单场景发展到复杂场景。尽管已有的人脸识别系统在特定约束环境下的识别成功率较高,
+    - 随着计算机视觉的飞速发展,人脸识别技术已从简单场景发展到复杂场景,也即姿态、光照、表情、噪声、遮挡、化妆、年龄、种族、性别等差异化所呈现的复杂场景。尽管已有的人脸识别系统在特定约束环境下的识别成功率较高,
+
+nlp_gpt3_text-generation_chinese-base:
+  name: GPT-3预训练生成模型-中文-base
+  inputs: 
+    - 用Python写一段冒泡排序代码：
+    - 随着计算机视觉的飞速发展,人脸识别技术已从简单场景发展到复杂场景。尽管已有的人脸识别系统在特定约束环境下的识别成功率较高,
+
+nlp_gpt3_text-generation_1.3B:
+  name: GPT-3预训练生成模型-中文-1.3B
+  comment: loop bug
+  inputs: 
+    - 用Python写一段冒泡排序代码：
+    - 随着计算机视觉的飞速发展,人脸识别技术已从简单场景发展到复杂场景。尽管已有的人脸识别系统在特定约束环境下的识别成功率较高,
+
+nlp_gpt3_text-generation_2.7B:
+  name: GPT-3预训练生成模型-中文-2.7B
+  comment: need megatron mpu
+  inputs: 
+    - 随着计算机视觉的飞速发展,人脸识别技术已从简单场景发展到复杂场景。尽管已有的人脸识别系统在特定约束环境下的识别成功率较高,
+
+nlp_gpt3_text-generation_13B:
+  name: GPT-3预训练生成模型-中文-13B
+  comment: need megatron mpu
+  inputs: 
+    - 随着计算机视觉的飞速发展,人脸识别技术已从简单场景发展到复杂场景。尽管已有的人脸识别系统在特定约束环境下的识别成功率较高,
+    - 程序员脱发用什么洗发水
+    - 写一个python的快排代码
+
+nlp_gpt3_text-generation_30B:
+  name: GPT-3预训练生成模型-中文-30B
+  comment: need megatron mpu
+  inputs: 
+    - 随着计算机视觉的飞速发展,人脸识别技术已从简单场景发展到复杂场景。尽管已有的人脸识别系统在特定约束环境下的识别成功率较高,
+    - 程序员脱发用什么洗发水
+    - 写一个python的快排代码
+ 
+nlp_gpt3_text-generation_175B:
+  name: GPT-3预训练生成模型-中文-175B
+  comment: not-ready
+  inputs: 
+    - 随着计算机视觉的飞速发展,人脸识别技术已从简单场景发展到复杂场景。尽管已有的人脸识别系统在特定约束环境下的识别成功率较高,
+    - 程序员脱发用什么洗发水
+    - 写一个python的快排代码
+
+nlp_gpt3_poetry-generation_chinese-large:
+  name: GPT-3诗词生成模型-中文-large
+  inputs: 
+    - 落木旧山寺
+
+nlp_gpt3_kuakua-robot_chinese-large:
+  name: GPT-3夸夸机器人-中文-large
+  inputs: 
+    - "今天终于拿到驾照了，求夸 | "
+
+# PALM Models
+
+# PALM 2.0预训练生成模型-中文-base
+# PALM 2.0摘要生成模型-中文-base：基于PALM2.0中文base模型训练得到的摘要生成模型
+# PALM 2.0摘要生成模型-中文-large：基于PALM2.0中文large训练得到的摘要生成模型
+# PALM 2.0商品文案生成-中文-base：基于PALM2.0中文base训练得到的商品文案描述生成模型
+# PALM 2.0天气生成模型-中文-base：基于PALM2.0中文base训练得到的天气信息生成模型
+
+nlp_palm2.0_pretrained_chinese-base:
+  name: PALM 2.0预训练生成模型-中文-base
+  comment: 生成结果很乱
+  inputs: 
+    - 随着计算机视觉的飞速发展,人脸识别技术已从简单场景发展到复杂场景。尽管已有的人脸识别系统在特定约束环境下的识别成功率较高,
+    - 程序员脱发用什么洗发水
+    - 写一个python的快排代码
+
+nlp_palm2.0_text-generation_chinese-base:
+  name: PALM 2.0摘要生成模型-中文-base
+  comment: 模型1.2G
+  inputs: 
+    - 昨天起，上海地铁3号线长江南路站、殷高西路站、江湾镇站三站进一步限流。体验发现，高峰时段排队5分钟能进站；不少乘客选择提前起床，“现在提前10到20分钟起床，即便限流也不会影响上班”。被限流的XDJMS，你们提前多久？新民网
+
+nlp_palm2.0_text-generation_chinese-large:
+  name: PALM 2.0摘要生成模型-中文-large
+  comment: 模型2.34G
+  inputs: 
+    - 本文总结了十个可穿戴产品的设计原则，而这些原则，同样也是笔者认为是这个行业最吸引人的地方：1.为人们解决重复性问题；2.从人开始，而不是从机器开始；3.要引起注意，但不要刻意；4.提升用户能力，而不是取代
+
+nlp_palm2.0_text-generation_commodity_chinese-base:
+  name: PALM 2.0商品文案生成-中文-base
+  comment: 还行，偏向于商品营销文案
+  inputs: 
+    - 垃圾桶，双层，可拆卸，加高，加高双层，把手，垃圾桶，内附，万向轮
+
+nlp_palm2.0_text-generation_weather_chinese-base:
+  name: PALM 2.0天气播报模型-中文-base
+  comment: 还行，偏向于空气质量播报
+  inputs: 
+    - 今日天气类型='浮尘'&空气质量等级='重度污染'&紫外线强度指数='中等'
+
+# PLUG Models
+nlp_plug_text-generation_27B:
+  name: PLUG预训练生成模型-中文-27B
+  comment: 需要megatron mpu
+  inputs: 
+    - 段誉轻挥折扇，摇了摇头，说道：“你师父是你的师父，你师父可不是我的师父。"
+
+nlp_plug_question-generation_27B:
+  name: PLUG通用问题生成模型-中文-27B
+  comment: 需要megatron mpu
+  inputs: 
+    - 爬行垫根据中间材料的不同可以分为:XPE爬行垫、EPE爬行垫、EVA爬行垫、PVC爬行垫;其中XPE爬行垫、EPE爬行垫都属于PE材>料加保鲜膜复合而成,都是无异味的环保材料,但是XPE爬行垫是品质较好的爬行垫,韩国进口爬行垫都是这种爬行垫,而EPE爬行垫是国内>厂家为了减低成本,使用EPE(珍珠棉)作为原料生产的一款爬行垫,该材料弹性差,易碎,开孔发泡防水性弱。EVA爬行垫、PVC爬行垫是用EVA或PVC作为原材料与保鲜膜复合的而成的爬行垫,或者把图案转印在原材料上,这两款爬行垫通常有异味,如果是图案转印的爬行垫,油墨>外露容易脱落。 当时我儿子爬的时候,我们也买了垫子,但是始终有味。最后就没用了,铺的就的薄毯子让他爬。
+# 预期输出：output: {'text': '爬行垫什么材质的好爬行垫什么材质的好'}
+
+PromptCLUE:
+  name: 全中文任务支持零样本学习模型
+  model: ClueAI/PromptCLUE
+  task: text2text-generation
+  inputs: 
+    - '情感分析：\n这个看上去还可以，但其实我不喜欢\n选项：积极，消极'
+    # {'text': '消极'}
+
+    - "下面句子是否表示了相同的语义：\n文本1：糖尿病腿麻木怎么办？\n文本2：糖尿病怎样控制生活方式\n选项：相似，不相似\n答案："
+    # {'text': '不相似'}
+
+    - '这是关于哪方面的新闻：\n如果日本沉没，中国会接收日本难民吗？\n选项：故事,文化,娱乐,体育,财经,房产,汽车,教育,科技,军事,旅游,国际,股票,农业,游戏'
+    # {'text': '国际'}
+
+    - "阅读文本抽取关键信息：\n张玄武1990年出生中国国籍无境外居留权博士学历现任杭州线锁科技技术总监。\n问题：机构，人名，职位，籍贯，专业，国籍，学历，种族\n答案："
+    # {'text': '机构：杭州线锁科技技术_人名：张玄武_职位：博士学历'}
+
+    - "翻译成英文：\n杀不死我的只会让我更强大\n答案："
+    # {'text': 'To kill my life only let me stronger'}
+
+    - '为下面的文章生成摘要：\n北京时间9月5日12时52分，四川甘孜藏族自治州泸定县发生6.8级地震。地震发生后，领导高度重视并作出重要指示，要求把抢救生命作为首要任务，全力救援受灾群众，最大限度减少人员伤亡'
+    # {'text': '四川甘孜发生6.8级地震'}
+
+    - "推理关系判断：\n前提：小明今天在北京\n假设：小明在深圳旅游\n选项：矛盾，蕴含，中立\n答案："
+    # {'text': '蕴涵'}
+
+    - '阅读以下对话并回答问题。\n男：今天怎么这么晚才来上班啊？女：昨天工作到很晚，而且我还感冒了。男：那你回去休息吧，我帮你请假。女：谢谢你。\n问题：女的怎么样？\n选项：正在工作，感冒了，在打电话，要出差。'
+    # {'text': '感冒了'}
+
+    - "文本纠错：\n告诉二营长，叫他彻回来，我李云龙从不打没有准备的杖\n答案："
+    #{'text'：'告诉二营长，叫他下来，我李云龙从不打没有准备的仗'}
+
+    - "问答：\n问题：小米的创始人是谁？\n答案："
+    # {'text': '小米创始人：雷军'}
+
+PromptCLUE-base-v1-5:
+  name: 全中文任务支持零样本学习模型v1.5
+  model: ClueAI/PromptCLUE-base-v1-5
+  task: text2text-generation
+  inputs: 
+    - '情感分析：\n这个看上去还可以，但其实我不喜欢\n选项：积极，消极'
+    # {'text': '消极'}
+
+    - "下面句子是否表示了相同的语义：\n文本1：糖尿病腿麻木怎么办？\n文本2：糖尿病怎样控制生活方式\n选项：相似，不相似\n答案："
+    # {'text': '不相似'}
+
+    - '这是关于哪方面的新闻：\n如果日本沉没，中国会接收日本难民吗？\n选项：故事,文化,娱乐,体育,财经,房产,汽车,教育,科技,军事,旅游,国际,股票,农业,游戏'
+    # {'text': '国际'}
+
+    - "阅读文本抽取关键信息：\n张玄武1990年出生中国国籍无境外居留权博士学历现任杭州线锁科技技术总监。\n问题：机构，人名，职位，籍贯，专业，国籍，学历，种族\n答案："
+    # {'text': '机构：杭州线锁科技技术_人名：张玄武_职位：博士学历'}
+
+    - "翻译成英文：\n杀不死我的只会让我更强大\n答案："
+    # {'text': 'To kill my life only let me stronger'}
+
+    - '为下面的文章生成摘要：\n北京时间9月5日12时52分，四川甘孜藏族自治州泸定县发生6.8级地震。地震发生后，领导高度重视并作出重要指示，要求把抢救生命作为首要任务，全力救援受灾群众，最大限度减少人员伤亡'
+    # {'text': '四川甘孜发生6.8级地震'}
+
+    - "推理关系判断：\n前提：小明今天在北京\n假设：小明在深圳旅游\n选项：矛盾，蕴含，中立\n答案："
+    # {'text': '蕴涵'}
+
+    - '阅读以下对话并回答问题。\n男：今天怎么这么晚才来上班啊？女：昨天工作到很晚，而且我还感冒了。男：那你回去休息吧，我帮你请假。女：谢谢你。\n问题：女的怎么样？\n选项：正在工作，感冒了，在打电话，要出差。'
+    # {'text': '感冒了'}
+
+    - "文本纠错：\n告诉二营长，叫他彻回来，我李云龙从不打没有准备的杖\n答案："
+    #{'text'：'告诉二营长，叫他下来，我李云龙从不打没有准备的仗'}
+
+    - "问答：\n问题：小米的创始人是谁？\n答案："
+    # {'text': '小米创始人：雷军'}
+
+
+ChatYuan-large:
+  name: 元语功能型对话大模型
+  model: ClueAI/ChatYuan-large
+  task: text2text-generation
+  inputs: 
+    - "帮我写一个请假条，我因为新冠不舒服，需要请假3天，请领导批准"
+    - "你能干什么"
+    - "用英文写一封道歉的邮件，表达因为物流延误，不能如期到达，我们可以赔偿贵公司所有损失"
+    - "写一个文章，题目是未来城市"
+    - "写一个诗歌，关于冬天"
+    - "从南京到上海的路线"
+    - "学前教育专业岗位实习中，在学生方面会存在问题，请提出改进措施。800字"
+    - "根据标题生成文章：标题：屈臣氏里的化妆品到底怎么样？正文：化妆品，要讲究科学运用，合理搭配。屈臣氏起码是正品连锁店。请继续后面的文字。"
+    - "帮我对比几款GPU，列出详细参数对比，并且给出最终结论"
+
+nlp_structbert_sentiment-classification_chinese-base:
+  name: StructBERT情感分类-中文-通用-base
+  task: text-classification
+  inputs:
+    - 启动的时候很大声音，然后就会听到1.2秒的卡察的声音，类似齿轮摩擦的声音
+
+Erlangshen-RoBERTa-330M-Sentiment:
+  name: 二郎神-RoBERTa-330M-情感分类
+  model: Fengshenbang/Erlangshen-RoBERTa-330M-Sentiment
+  task: text-classification
+  inputs:
+    - 今天心情不好
+    - 启动的时候很大声音，然后就会听到1.2秒的卡察的声音，类似齿轮摩擦的声音
+
+nlp_structbert_word-segmentation_chinese-base:
+  name: BAStructBERT分词-中文-新闻领域-base
+  task: word-segmentation
+  inputs:
+    - 今天天气不错，适合出去游玩
+    - 今天心情不好
+    - 启动的时候很大声音，然后就会听到1.2秒的卡察的声音，类似齿轮摩擦的声音
+
+nlp_raner_named-entity-recognition_chinese-base-news:
+  name: RaNER命名实体识别-中文-新闻领域-base
+  task: named_entity_recognition
+  inputs:
+    - 国正先生在我心中就是这样的一位学长。
+    # {'output': [{'type': 'PER', 'start': 0, 'end': 2, 'span': '国正'}]}
+    - 今天心情不好
+    - 启动的时候很大声音，然后就会听到1.2秒的卡察的声音，类似齿轮摩擦的声音
+
+nlp_raner_named-entity-recognition_chinese-base-ecom-50cls:
+  name: RaNER命名实体识别-中文-电商领域-细粒度-base
+  task: named_entity_recognition
+  inputs:
+    - eh 摇滚狗涂鸦拔印宽松牛仔裤 情侣款
+    # {'output': [{'type': '品牌', 'start': 0, 'end': 2, 'span': 'eh'}, {'type': '品牌', 'start': 3, 'end': 6, 'span': '摇滚狗'}, {'type': '款式_其他', 'start': 6, 'end': 8, 'span': '涂鸦'}, {'type': '款式_其他', 'start': 8, 'end': 10, 'span': '拔印'}, {'type': '款式_其他', 'start': 10, 'end': 12, 'span': '宽松'}, {'type': '材质_面料', 'start': 12, 'end': 14, 'span': '牛仔'}, {'type': '产品_核心产品', 'start': 14, 'end': 15, 'span': '裤'}, {'type': '款式_其他', 'start': 16, 'end': 19, 'span': '情侣款'}]}
+    - 国正先生在我心中就是这样的一位学长。
+    # {'output': [{'type': 'PER', 'start': 0, 'end': 2, 'span': '国正'}]}
+    - 今天心情不好
+    - 启动的时候很大声音，然后就会听到1.2秒的卡察的声音，类似齿轮摩擦的声音
+
+nlp_csanmt_translation_en2zh:
+  name: CSANMT连续语义增强机器翻译-英中-通用领域-large
+  task: translation
+  comment: 下载量高，21959 次下载
+  inputs:
+    - Elon Musk, co-founder and chief executive officer of Tesla Motors.
+    # '特斯拉汽车公司联合创始人兼首席执行官埃隆 · 马斯克。'
+
+nlp_csanmt_translation_zh2en:
+  name: CSANMT连续语义增强机器翻译-中英-通用领域-large  
+  task: translation
+  comment: 下载量不高，7727 次下载
+  inputs:
+    - 声明补充说，沃伦的同事都深感震惊，并且希望他能够投案自首。
+    # The statement added that Warren's colleagues were deeply shocked and expected him to turn himself in.
+
+nlp_bart_text-error-correction_chinese:
+  name: BART文本纠错-中文-通用领域-large
+  task: text_error_correction
+  comment: 初始化模型失败
+  inputs:
+    - 这洋的话，下一年的福气来到自己身上。
+
+nlp_bert_relation-extraction_chinese-base:
+  name: RoBERTa关系抽取-中文-通用-base
+  task: information_extraction
+  comment: 抽取效果一般
+  inputs:
+    - 高捷，祖籍江苏，本科毕业于东南大学
+
+nlp_structbert_zero-shot-classification_chinese-base:
+  name: StructBERT零样本分类-中文-base
+  task: zero-shot-classification
+  comment: 跑不起来
+  inputs:
+    - 高捷，祖籍江苏，本科毕业于东南大学
+
+nlp_convai_text2sql_pretrain_cn:
+  name: SPACE-T表格问答预训练模型-中文-通用领域-base
+  task: table_question_answering
+  comment: 跑得起来
+  inputs:
+    - 长江流域的小型水库的库容总量是多少？
+
+nlp_star_conversational-text-to-sql:
+  name: SPACE-T表格问答预训练模型-英文-通用领域-Large
+  task: table_question_answering
+  comment: 跑得起来
+  inputs:
+    - I'd like to see Shop names.
+    - "Which of these are hiring?"
+    - "Which shop is hiring the highest number of employees? | do you want the name of the shop ? | Yes"
+
+nlp_rom_passage-ranking_chinese-base:
+  name: ROM语义相关性-中文-通用领域-base
+
+nlp_structbert_faq-question-answering_chinese-base:
+  name: StructBERT FAQ问答-中文-通用领域-base
+  comment: 跑不起来
+
+nlp_bert_document-segmentation_chinese-base:
+  name: BERT文本分割-中文-通用领域
+  task: document_segmentation
+  inputs:
+    - 移动端语音唤醒模型，检测关键词为“小云小云”。模型主体为4层FSMN结构，使用CTC训练准则，参数量750K，适用于移动端设备运行。模型输入为Fbank特征，输出为基于char建模的中文全集token预测，测试工具根据每一帧的预测数据进行后处理得到输入音频的实时检测结果。模型训练采用“basetrain + finetune”的模式，basetrain过程使用大量内部移动端数据，在此基础上，使用1万条设备端录制安静场景“小云小云”数据进行微调，得到最终面向业务的模型。后续用户可在basetrain模型基础上，使用其他关键词数据进行微调，得到新的语音唤醒模型，但暂时未开放模型finetune功能。
+
+speech_inverse_text_processing_fun-text-processing-itn-en:
+  name: 语音识别-英语-后处理- ITN模型
+  task: inverse_text_processing
+  inputs:
+    - on december second, we paid one hundred and twenty three dollars for christmas tree.
+
+speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch:
+  name: Paraformer语音识别-中文-通用-16k-离线-large-pytorch
+  task: auto_speech_recognition
+  inputs:
+    - https://isv-data.oss-cn-hangzhou.aliyuncs.com/ics/MaaS/ASR/test_audio/asr_example_zh.wav
+
+speech_frcrn_ans_cirm_16k:
+  name: FRCRN语音降噪-单麦-16k
+  task: speech_frcrn_ans_cirm_16k
+  inputs:
+    - https://modelscope.oss-cn-beijing.aliyuncs.com/test/audios/speech_with_noise1.wav
+
+speech_dfsmn_aec_psm_16k:
+  name: DFSMN回声消除-单麦单参考-16k
+  task: acoustic_echo_cancellation
+  inputs: 
+    - 'nearend_mic': 'https://modelscope.oss-cn-beijing.aliyuncs.com/test/audios/nearend_mic.wav'
+      'farend_speech': 'https://modelscope.oss-cn-beijing.aliyuncs.com/test/audios/farend_speech.wav'
+
+punc_ct-transformer_zh-cn-common-vocab272727-pytorch:
+  name: CT-Transformer标点-中文-通用-pytorch
+  task: punctuation
+  inputs: 
+    - 我们都是木头人不会讲话不会动
+
+
+speech_fsmn_vad_zh-cn-16k-common-pytorch:
+  name: FSMN语音端点检测-中文-通用-16k-离线-pytorch
+  task: auto_speech_recognition
+  inputs: 
+    - https://isv-data.oss-cn-hangzhou.aliyuncs.com/ics/MaaS/ASR/test_audio/vad_example.wav
+
+speech_sambert-hifigan_tts_zhiyan_emo_zh-cn_16k:
+  name: 语音合成-中文-多情感领域-16k-发音人Zhiyan
+  task: text_to_speech
+  inputs: 
+    - 如果你觉得这个该模型对有所帮助，请考虑引用下面的相关的论文
+
+speech_xvector_sv-zh-cn-cnceleb-16k-spk3465-pytorch:
+  name: xvector说话人确认-中文-cnceleb-16k-离线-pytorch
+  task: speaker_verification
+  inputs:
+    - https://isv-data.oss-cn-hangzhou.aliyuncs.com/ics/MaaS/ASR/test_audio/sv_example_enroll.wav
+
+ofa_image-caption_coco_large_en:
+  name: OFA图像描述-英文-通用领域-large
+  task: image_captioning
+  inputs:
+    - https://shuangqing-public.oss-cn-zhangjiakou.aliyuncs.com/donuts.jpg
+
+cv_diffusion_text-to-image-synthesis_tiny:
+  name: 文本到图像生成扩散模型-中英文-通用领域-tiny
+  task: text_to_image_synthesis
+  comment: 跑不动
+  inputs:
+    - {'text': '中国山水画'}
+
+multi-modal_chinese_stable_diffusion_v1.0:
+  name: 中文StableDiffusion-通用领域
+  task: text_to_image_synthesis
+  comment: numpy error
+  inputs:
+    - {'text': '中国山水画'}
+
+uni-fold-monomer:
+  name: Uni-Fold-Monomer 开源的蛋白质单体结构预测模型
+  task: protein-structure
+  model: DPTech/uni-fold-monomer
+  comment: 要安装 https://github.com/dptech-corp/Uni-Core/releases
+  inputs:
+    - LILNLRGGAFVSNTQITMADKQKKFINEIQEGDLVRSYSITDETFQQNAVTSIVKHEADQLCQINFGKQHVVC
+
+uni-fold-multimer:
+  name: Uni-Fold-Multimer 开源的蛋白质复合物结构预测模型
+  task: protein-structure
+  model: DPTech/uni-fold-multimer
+  comment: 要安装 https://github.com/dptech-corp/Uni-Core/releases
+  inputs:
+    - 'GSSSQVQLVESGGGLVQAGGSLRLS GSSSQVQLVESGGGLVQAGGSLRLS GSSSQVQLVESGGGLVQAGGSLRLS'
+
+cv_resnest101_animal_recognition:
+  name: 动物识别-中文-通用领域
+  task: animal_recognition
+  inputs:
+    - https://pailitao-image-recog.oss-cn-zhangjiakou.aliyuncs.com/mufan/img_data/maas_test_data/dog.png
+
+cv_resnet18_human-detection:
+  name: 人体检测-通用-Base
+  task: human_detection
+  inputs:
+    - https://modelscope.oss-cn-beijing.aliyuncs.com/test/images/image_detection.jpg
+
+cv_resnest101_general_recognition:
+  name: 万物识别-中文-通用领域
+  task: general_recognition
+  inputs:
+    - https://pailitao-image-recog.oss-cn-zhangjiakou.aliyuncs.com/mufan/img_data/maas_test_data/dog.png
+
+cv_fft_inpainting_lama:
+  name: LaMa图像填充
+  task: image_inpainting
+  inputs:
+    - img: https://modelscope.oss-cn-beijing.aliyuncs.com/test/images/image_inpainting/image_inpainting.png
+      mask: https://modelscope.oss-cn-beijing.aliyuncs.com/test/images/image_inpainting/image_inpainting_mask.png
+
+cv_unet_person-image-cartoon_compound-models:
+  name: DCT-Net人像卡通化
+  task: image_portrait_stylization
+  inputs:
+    - https://modelscope.oss-cn-beijing.aliyuncs.com/test/images/image_cartoon.png
+
+cv_unet_person-image-cartoon-3d_compound-models:
+  name: DCT-Net人像卡通化-3D
+  task: image_portrait_stylization
+  inputs:
+    - https://invi-label.oss-cn-shanghai.aliyuncs.com/label/cartoon/image_cartoon.png
